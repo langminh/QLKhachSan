@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TanKimHotel2ModelStoreContainer" CdmEntityContainer="DataEntities">
+    <EntitySetMapping Name="Configs">
+      <EntityTypeMapping TypeName="TanKimHotel2Model.Config">
+        <MappingFragment StoreEntitySet="Config">
+          <ScalarProperty Name="Key" ColumnName="Key" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Floors">
+      <EntityTypeMapping TypeName="TanKimHotel2Model.Floor">
+        <MappingFragment StoreEntitySet="Floor">
+          <ScalarProperty Name="FloorId" ColumnName="FloorId" />
+          <ScalarProperty Name="FloorName" ColumnName="FloorName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InOuts">
+      <EntityTypeMapping TypeName="TanKimHotel2Model.InOut">
+        <MappingFragment StoreEntitySet="InOut">
+          <ScalarProperty Name="InOutId" ColumnName="InOutId" />
+          <ScalarProperty Name="RoomId" ColumnName="RoomId" />
+          <ScalarProperty Name="PersonNumber" ColumnName="PersonNumber" />
+          <ScalarProperty Name="CheckinTime" ColumnName="CheckinTime" />
+          <ScalarProperty Name="CheckOutTime" ColumnName="CheckOutTime" />
+          <ScalarProperty Name="PayDate" ColumnName="PayDate" />
+          <ScalarProperty Name="LengthStay" ColumnName="LengthStay" />
+          <ScalarProperty Name="RoomServiceType" ColumnName="RoomServiceType" />
+          <ScalarProperty Name="RoomServiceAmount" ColumnName="RoomServiceAmount" />
+          <ScalarProperty Name="OtherServiceAmount" ColumnName="OtherServiceAmount" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="IsDouble" ColumnName="IsDouble" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InOut_OtherServices">
+      <EntityTypeMapping TypeName="TanKimHotel2Model.InOut_OtherServices">
+        <MappingFragment StoreEntitySet="InOut_OtherServices">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="InOutId" ColumnName="InOutId" />
+          <ScalarProperty Name="OtherServiceId" ColumnName="OtherServiceId" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OtherServices">
+      <EntityTypeMapping TypeName="TanKimHotel2Model.OtherService">
+        <MappingFragment StoreEntitySet="OtherService">
+          <ScalarProperty Name="OtherServiceId" ColumnName="OtherServiceId" />
+          <ScalarProperty Name="ServiceName" ColumnName="ServiceName" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rooms">
+      <EntityTypeMapping TypeName="TanKimHotel2Model.Room">
+        <MappingFragment StoreEntitySet="Room">
+          <ScalarProperty Name="RoomId" ColumnName="RoomId" />
+          <ScalarProperty Name="RoomName" ColumnName="RoomName" />
+          <ScalarProperty Name="FloorId" ColumnName="FloorId" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="IsDouble" ColumnName="IsDouble" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RoomServicePrices">
+      <EntityTypeMapping TypeName="TanKimHotel2Model.RoomServicePrice">
+        <MappingFragment StoreEntitySet="RoomServicePrice">
+          <ScalarProperty Name="RoomServicePriceId" ColumnName="RoomServicePriceId" />
+          <ScalarProperty Name="RoomServiceType" ColumnName="RoomServiceType" />
+          <ScalarProperty Name="Minutes" ColumnName="Minutes" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="TanKimHotel2Model.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

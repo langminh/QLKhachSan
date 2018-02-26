@@ -1,0 +1,45 @@
+﻿@model ProductMvc.ViewModel.LogOnModel
+
+@{
+    ViewBag.Title = "LogOn";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container" style="width:50%">
+    <div class="jumbotron">
+        <div class="row">
+            @using (Html.BeginForm()) 
+            {
+                @Html.ValidationSummary(true)
+                <fieldset>
+                    <legend>Đăng nhập</legend>
+                    @if (ViewBag.Message != null && ViewBag.Message.ToString().Trim() != "")
+                    {
+                        <div class="alert alert-danger" role="alert"><strong>Đăng nhập thất bại</strong><Br/>@ViewBag.Message</div>
+                    }
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        @Html.EditorFor(model => model.UserName)
+                        @Html.ValidationMessageFor(model => model.UserName)
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                        @Html.EditorFor(model => model.Password)
+                        @Html.ValidationMessageFor(model => model.Password)
+                    </div>
+                    
+                    <center>@Html.EditorFor(model => model.RememberMe) @Html.LabelFor(model => model.RememberMe)
+                    @Html.ValidationMessageFor(model => model.RememberMe)
+                    <br><button type="submit" class="btn btn-info" >Đăng nhập</button></center>
+                </fieldset>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $('#UserName').addClass('form-control');
+        $('#Password').addClass('form-control');
+    </script>
+}

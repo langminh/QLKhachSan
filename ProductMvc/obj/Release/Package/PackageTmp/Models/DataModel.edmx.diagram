@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6d1fcb5b062f4903998af18bef42f65c" Name="Diagram1">
+        <EntityTypeShape EntityType="TanKimHotel2Model.Config" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TanKimHotel2Model.Floor" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TanKimHotel2Model.InOut" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="TanKimHotel2Model.InOut_OtherServices" Width="1.5" PointX="7.5" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="TanKimHotel2Model.OtherService" Width="1.5" PointX="5.25" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TanKimHotel2Model.Room" Width="1.5" PointX="3" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TanKimHotel2Model.RoomServicePrice" Width="1.5" PointX="7.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TanKimHotel2Model.User" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <AssociationConnector Association="TanKimHotel2Model.FK_dbo_Room_dbo_Floor_FloorId" ManuallyRouted="false" />
+        <AssociationConnector Association="TanKimHotel2Model.FK_dbo_InOut_dbo_Room_RoomId" ManuallyRouted="false" />
+        <AssociationConnector Association="TanKimHotel2Model.FK_dbo_InOut_OtherServices_dbo_InOut_InOutId" ManuallyRouted="false" />
+        <AssociationConnector Association="TanKimHotel2Model.FK_dbo_InOut_OtherServices_dbo_OtherService_OtherServiceId" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

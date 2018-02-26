@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TanKimHotel2Model" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="DataEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="Configs" EntityType="TanKimHotel2Model.Config" />
+    <EntitySet Name="Floors" EntityType="TanKimHotel2Model.Floor" />
+    <EntitySet Name="InOuts" EntityType="TanKimHotel2Model.InOut" />
+    <EntitySet Name="InOut_OtherServices" EntityType="TanKimHotel2Model.InOut_OtherServices" />
+    <EntitySet Name="OtherServices" EntityType="TanKimHotel2Model.OtherService" />
+    <EntitySet Name="Rooms" EntityType="TanKimHotel2Model.Room" />
+    <EntitySet Name="RoomServicePrices" EntityType="TanKimHotel2Model.RoomServicePrice" />
+    <EntitySet Name="Users" EntityType="TanKimHotel2Model.User" />
+    <AssociationSet Name="FK_dbo_Room_dbo_Floor_FloorId" Association="TanKimHotel2Model.FK_dbo_Room_dbo_Floor_FloorId">
+      <End Role="Floor" EntitySet="Floors" />
+      <End Role="Room" EntitySet="Rooms" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_InOut_dbo_Room_RoomId" Association="TanKimHotel2Model.FK_dbo_InOut_dbo_Room_RoomId">
+      <End Role="Room" EntitySet="Rooms" />
+      <End Role="InOut" EntitySet="InOuts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_InOut_OtherServices_dbo_InOut_InOutId" Association="TanKimHotel2Model.FK_dbo_InOut_OtherServices_dbo_InOut_InOutId">
+      <End Role="InOut" EntitySet="InOuts" />
+      <End Role="InOut_OtherServices" EntitySet="InOut_OtherServices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_InOut_OtherServices_dbo_OtherService_OtherServiceId" Association="TanKimHotel2Model.FK_dbo_InOut_OtherServices_dbo_OtherService_OtherServiceId">
+      <End Role="OtherService" EntitySet="OtherServices" />
+      <End Role="InOut_OtherServices" EntitySet="InOut_OtherServices" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Config">
+    <Key>
+      <PropertyRef Name="Key" />
+    </Key>
+    <Property Name="Key" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+    <Property Name="Value" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Floor">
+    <Key>
+      <PropertyRef Name="FloorId" />
+    </Key>
+    <Property Name="FloorId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="FloorName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Rooms" Relationship="TanKimHotel2Model.FK_dbo_Room_dbo_Floor_FloorId" FromRole="Floor" ToRole="Room" />
+  </EntityType>
+  <EntityType Name="InOut">
+    <Key>
+      <PropertyRef Name="InOutId" />
+    </Key>
+    <Property Name="InOutId" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="RoomId" Type="Int32" />
+    <Property Name="PersonNumber" Type="Int32" Nullable="false" />
+    <Property Name="CheckinTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CheckOutTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="PayDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LengthStay" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="RoomServiceType" Type="Int32" Nullable="false" />
+    <Property Name="RoomServiceAmount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="OtherServiceAmount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="TotalAmount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="Note" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="IsDouble" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Room" Relationship="TanKimHotel2Model.FK_dbo_InOut_dbo_Room_RoomId" FromRole="InOut" ToRole="Room" />
+    <NavigationProperty Name="InOut_OtherServices" Relationship="TanKimHotel2Model.FK_dbo_InOut_OtherServices_dbo_InOut_InOutId" FromRole="InOut" ToRole="InOut_OtherServices" />
+  </EntityType>
+  <EntityType Name="InOut_OtherServices">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="InOutId" Type="Int64" Nullable="false" />
+    <Property Name="OtherServiceId" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="InOut" Relationship="TanKimHotel2Model.FK_dbo_InOut_OtherServices_dbo_InOut_InOutId" FromRole="InOut_OtherServices" ToRole="InOut" />
+    <NavigationProperty Name="OtherService" Relationship="TanKimHotel2Model.FK_dbo_InOut_OtherServices_dbo_OtherService_OtherServiceId" FromRole="InOut_OtherServices" ToRole="OtherService" />
+  </EntityType>
+  <EntityType Name="OtherService">
+    <Key>
+      <PropertyRef Name="OtherServiceId" />
+    </Key>
+    <Property Name="OtherServiceId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="ServiceName" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Price" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <NavigationProperty Name="InOut_OtherServices" Relationship="TanKimHotel2Model.FK_dbo_InOut_OtherServices_dbo_OtherService_OtherServiceId" FromRole="OtherService" ToRole="InOut_OtherServices" />
+  </EntityType>
+  <EntityType Name="Room">
+    <Key>
+      <PropertyRef Name="RoomId" />
+    </Key>
+    <Property Name="RoomId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="RoomName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="FloorId" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+    <Property Name="IsDouble" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Floor" Relationship="TanKimHotel2Model.FK_dbo_Room_dbo_Floor_FloorId" FromRole="Room" ToRole="Floor" />
+    <NavigationProperty Name="InOuts" Relationship="TanKimHotel2Model.FK_dbo_InOut_dbo_Room_RoomId" FromRole="Room" ToRole="InOut" />
+  </EntityType>
+  <EntityType Name="RoomServicePrice">
+    <Key>
+      <PropertyRef Name="RoomServicePriceId" />
+    </Key>
+    <Property Name="RoomServicePriceId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="RoomServiceType" Type="Int32" Nullable="false" />
+    <Property Name="Minutes" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Password" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_dbo_Room_dbo_Floor_FloorId">
+    <End Role="Floor" Type="TanKimHotel2Model.Floor" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Room" Type="TanKimHotel2Model.Room" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Floor">
+        <PropertyRef Name="FloorId" />
+      </Principal>
+      <Dependent Role="Room">
+        <PropertyRef Name="FloorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_InOut_dbo_Room_RoomId">
+    <End Role="Room" Type="TanKimHotel2Model.Room" Multiplicity="0..1" />
+    <End Role="InOut" Type="TanKimHotel2Model.InOut" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Room">
+        <PropertyRef Name="RoomId" />
+      </Principal>
+      <Dependent Role="InOut">
+        <PropertyRef Name="RoomId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_InOut_OtherServices_dbo_InOut_InOutId">
+    <End Role="InOut" Type="TanKimHotel2Model.InOut" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="InOut_OtherServices" Type="TanKimHotel2Model.InOut_OtherServices" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InOut">
+        <PropertyRef Name="InOutId" />
+      </Principal>
+      <Dependent Role="InOut_OtherServices">
+        <PropertyRef Name="InOutId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_InOut_OtherServices_dbo_OtherService_OtherServiceId">
+    <End Role="OtherService" Type="TanKimHotel2Model.OtherService" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="InOut_OtherServices" Type="TanKimHotel2Model.InOut_OtherServices" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OtherService">
+        <PropertyRef Name="OtherServiceId" />
+      </Principal>
+      <Dependent Role="InOut_OtherServices">
+        <PropertyRef Name="OtherServiceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
