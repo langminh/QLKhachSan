@@ -1,0 +1,10 @@
+﻿Thay đổi datasource trong file webconfig phần connectionstring
+
+
+UserName(admin): admin
+Password(admin): admin
+
+UserName(user): minh12
+PassWord(user): minh
+
+
