@@ -1,4 +1,4 @@
-namespace ProductMvc.Entity.EF
+﻿namespace ProductMvc.Entity.EF
 {
     using System;
     using System.Collections.Generic;
@@ -20,14 +20,18 @@ namespace ProductMvc.Entity.EF
         public string Password { get; set; }
 
         [StringLength(50)]
+        [Display(Name ="Địa chỉ")]
         public string Address { get; set; }
 
         [StringLength(50)]
+        [Display(Name = "Họ và tên")]
         public string FullName { get; set; }
 
+        [Display(Name = "Giới tính")]
         public bool? Sex { get; set; }
 
         [StringLength(20)]
+        [Display(Name = "Điện thoại")]
         public string Phone { get; set; }
 
         public int? RoleID { get; set; }

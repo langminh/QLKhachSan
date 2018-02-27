@@ -1,47 +1,50 @@
 ﻿@*@{if (Request.IsAuthenticated)
     {*@
-        @*if (this.User.Identity.Name == "admin")
-        {
+@*if (this.User.Identity.Name == "admin")
+    {
 
-            <form id="config" class="navbar-form navbar-left collapse" role="search">
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i> Thời gian vượt cho phép:</span>
-                    <input id="overTimeAllow" name="OverTimeAllow" type="text" class="form-control">
-                    <div class="input-group-btn">
-                        <button type="submit" class="btn btn-default">Đặt</button>
-                    </div>
+        <form id="config" class="navbar-form navbar-left collapse" role="search">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i> Thời gian vượt cho phép:</span>
+                <input id="overTimeAllow" name="OverTimeAllow" type="text" class="form-control">
+                <div class="input-group-btn">
+                    <button type="submit" class="btn btn-default">Đặt</button>
                 </div>
-            </form>
-        }*@
+            </div>
+        </form>
+    }*@
 
-        <ul class="nav navbar-nav navbar-right">
+<ul class="nav navbar-nav navbar-right">
+    @if (this.User.Identity.Name == "admin")
+    {
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                <i class="fa fa-wrench"></i> Cấu hình <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" role="menu">
+                <li><a href="/RoomServicePrice/index"><i class="fa fa-usd"></i> Giá phòng</a></li>
+                <li><a href="/OtherServicePrice/index"><i class="fa fa-glass"></i> Giá dịch vụ khác</a></li>
+            </ul>
+        </li>
+    }
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+            <i class="fa fa-user"></i> @this.User.Identity.Name <span class="caret"></span>
+        </a>
+
+        <ul class="dropdown-menu" role="menu">
             @if (this.User.Identity.Name == "admin")
             {
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                        <i class="fa fa-wrench"></i> Cấu hình <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="/RoomServicePrice/index"><i class="fa fa-usd"></i> Giá phòng</a></li>
-                        <li><a href="/OtherServicePrice/index"><i class="fa fa-glass"></i> Giá dịch vụ khác</a></li>
-                    </ul>
-                </li>
+                <li><a href="/Admin/Index"><i class="fa fa-cog"></i> Trang Quản Trị</a></li>
+                <li class="divider"></li>
             }
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                    <i class="fa fa-user"></i> @this.User.Identity.Name <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu" role="menu">
-                    @if (this.User.Identity.Name == "admin")
-                    {
-                        <li><a href="/Admin/Index"><i class="fa fa-cog"></i> Trang Quản Trị</a></li>
-                        <li class="divider"></li>
-                    }
-                    <li><a href="/Admin/ChangePass"><i class="fa fa-edit"></i> Đổi mật khẩu</a></li>
-                    <li><a href="/Admin/LogOff"><i class="fa fa-sign-out fa-fw"></i> Thoát</a></li>
-                </ul>
-            </li>
+
+            <li><a href="/Admin/Info/@this.User.Identity.Name"><i class="fa fa-info"></i> Trang cá nhân</a></li>
+            <li><a href="/Admin/ChangePass"><i class="fa fa-edit"></i> Đổi mật khẩu</a></li>
+            <li><a href="/Admin/LogOff"><i class="fa fa-sign-out fa-fw"></i> Thoát</a></li>
         </ul>
+    </li>
+</ul>
     }
 @*}*@
 

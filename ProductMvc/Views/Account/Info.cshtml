@@ -1,0 +1,132 @@
+﻿@{
+    ViewBag.Title = "Info";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model ProductMvc.Entity.EF.User
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
+            <p class=" text-info">@DateTime.Now.ToString("dd/MM/yyy hh:mm tt") </p>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
+
+
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        @{ string f = string.Empty;}
+                        @{
+                            if (Model != null)
+                            {
+                                if (!string.IsNullOrEmpty(Model.UserName))
+                                {
+                                    f = Model.UserName;
+                                }
+                            }
+                        }
+                        @f
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-3 col-lg-3 " align="center">
+                            <img alt="User Pic" src="~/Asset/images/user_male2-512.png" class="img-circle img-responsive">
+                        </div>
+                        <div class=" col-md-9 col-lg-9 ">
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
+                                @Html.ValidationSummary(true)
+                                <fieldset>
+                                    @Html.HiddenFor(model => model.UserID)
+                                    <div class="col-md-12">
+                                        <div class="input-group">
+                                            @Html.LabelFor(model => model.UserName, new { @class = "input-group-addon" })
+                                            <div>
+                                                @Html.TextBoxFor(model => model.UserName, new { @class = "form-control" })
+                                            </div>
+                                            @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "alert-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="input-group">
+                                            @Html.LabelFor(model => model.FullName, new { @class = "input-group-addon" })
+                                            <div>
+                                                @Html.TextBoxFor(model => model.FullName, new { @class = "form-control" })
+                                            </div>
+                                            @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "alert-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="input-group">
+                                            @Html.LabelFor(model => model.Address, new { @class = "input-group-addon" })
+                                            <div>
+                                                @Html.TextBoxFor(model => model.Address, new { @class = "form-control" })
+                                            </div>
+                                            @Html.ValidationMessageFor(model => model.Address, "", new { @class = "alert-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="input-group">
+                                            @Html.LabelFor(model => model.Phone, new { @class = "input-group-addon" })
+                                            <div>
+                                                @Html.TextBoxFor(model => model.Phone, new { @class = "form-control" })
+                                            </div>
+                                            @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "alert-danger" })
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <a data-original-title="Edit this user" data-toggle="tooltip" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+
+
+
+        $(document).ready(function () {
+            var panels = $('.user-infos');
+            var panelsButton = $('.dropdown-user');
+            panels.hide();
+
+            //Click dropdown
+            panelsButton.click(function () {
+                //get data-for attribute
+                var dataFor = $(this).attr('data-for');
+                var idFor = $(dataFor);
+
+                //current button
+                var currentButton = $(this);
+                idFor.slideToggle(400, function () {
+                    //Completed slidetoggle
+                    if (idFor.is(':visible')) {
+                        currentButton.html('<i class="glyphicon glyphicon-chevron-up text-muted"></i>');
+                    }
+                    else {
+                        currentButton.html('<i class="glyphicon glyphicon-chevron-down text-muted"></i>');
+                    }
+                })
+            });
+
+
+            $('[data-toggle="tooltip"]').tooltip();
+
+            $('button').click(function (e) {
+                e.preventDefault();
+                alert("This is a demo.\n :-)");
+            });
+        });
+    </script>
+}

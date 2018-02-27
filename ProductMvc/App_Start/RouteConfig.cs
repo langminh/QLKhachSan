@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,6 +13,13 @@ namespace ProductMvc
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+
+            routes.MapRoute(
+                       name: "Info",
+                       url: "Admin/{action}/{username}",
+                       defaults: new { controller = "Account", action = "Info", username = UrlParameter.Optional }
+                    );
+
             routes.MapRoute(
                        name: "LogOn",
                        url: "Admin/{action}/{id}",

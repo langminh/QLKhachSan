@@ -250,6 +250,7 @@
     <Compile Include="ViewModel\ReportViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Asset\images\user_male2-512.png" />
     <Content Include="Asset\style.css" />
     <Content Include="Asset\vendor\bootstrap-social\bootstrap-social.css" />
     <Content Include="Asset\vendor\bootstrap\css\bootstrap.css" />
@@ -1032,6 +1033,9 @@
     <Content Include="Views\OtherServicePrice\Create.cshtml" />
     <Content Include="Views\OtherServicePrice\Edit.cshtml" />
     <Content Include="Views\InOut\AddNewRoom.cshtml" />
+    <Content Include="Views\Account\Info.cshtml" />
+    <Content Include="Views\Account\EditUserInfo.cshtml" />
+    <Content Include="Views\Account\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

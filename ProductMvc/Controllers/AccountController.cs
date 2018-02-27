@@ -43,6 +43,8 @@ namespace ProductMvc.Controllers
             return View("LogOn", model);
         }
         #endregion
+
+
         #region LogOff
         public ActionResult LogOff()
         {
@@ -50,6 +52,8 @@ namespace ProductMvc.Controllers
             return RedirectToAction("LogOn","Account");
         }
         #endregion
+
+
         #region Create
         public ActionResult Create()
         {
@@ -103,5 +107,24 @@ namespace ProductMvc.Controllers
         }
         #endregion
 
+        #region Lấy thông tin
+        public ActionResult Info(string username)
+        {
+
+            var user = (from c in db.Users where c.UserName == username select c).FirstOrDefault();
+            if(user != null)
+            {
+                return View(user);
+            }
+            return View();
+        }
+        #endregion
+
+
+        public ActionResult Edit()
+        {
+            return View();
+        }
     }
+
 }
